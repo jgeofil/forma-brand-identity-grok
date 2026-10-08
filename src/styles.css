@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-sans: "Outfit", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --color-paper: #f3eee6;
+  --color-ink: #1a1714;
+  --color-muted: #5c564e;
+  --color-line: #ddd4c6;
+  --color-clay: #c4492a;
+  --color-clay-ink: #8d3018;
+
+  --shadow-border:
+    0px 0px 0px 1px rgba(26, 23, 20, 0.08),
+    0px 1px 2px -1px rgba(26, 23, 20, 0.06),
+    0px 12px 32px -18px rgba(26, 23, 20, 0.28);
+
+  --radius-lg: 0.5rem;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: var(--color-paper);
+    color: var(--color-ink);
+  }
+
+  body {
+    min-height: 100%;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-clay) 28%, var(--color-paper));
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-clay);
+    outline-offset: 2px;
+  }
+}
+
+.plate-frame {
+  aspect-ratio: 3 / 2;
+}
+
+@keyframes kiln-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.kiln-pulse {
+  animation: kiln-pulse 1.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kiln-pulse {
+    animation: none;
+  }
+}
